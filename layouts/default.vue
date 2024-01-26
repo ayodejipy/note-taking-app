@@ -1,8 +1,15 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const isCollapsed = useSidebar()
+
+const sidebarWidth = computed<string>(() => (isCollapsed.value ? 'w-40' : 'w-72'))
+</script>
 
 <template>
-    <div class="min-h-screen bg-slate-100 dark:bg-slate-800 flex">
-        <aside class="w-72 min-h-screen border-r border-gray-300 dark:border-gray-600">
+    <div class="min-h-screen bg-white dark:bg-slate-800 flex">
+        <aside
+            class="min-h-screen border-r border-gray-300 dark:border-gray-600 transition duration-150"
+            :class="sidebarWidth"
+        >
             <AppSidebar />
         </aside>
 
